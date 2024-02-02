@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 1s infinite;
+}
+
+@keyframes fly {
+    0%{
+        transform: translate(-15px, -40px);
+    }
+    50% {
+        transform: translate(15px, 50px);
+    }
+    100% {
+        transform: translate(-15px, -40px);
+    }
+}
+
+.fly {
+    animation: fly 3s ease-in-out infinite;
+}
+
+@keyframes minFly {
+    0%{
+        transform: translateY(-60px);
+    }
+    50% {
+        transform: translateY(25px);
+    }
+    100% {
+        transform: translateY(-60px);
+    }
+}
+
+.minFly {
+    animation: minFly 2s ease-in-out infinite;
+}

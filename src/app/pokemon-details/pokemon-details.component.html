@@ -1,0 +1,30 @@
+@if (pokemon) {
+    <div class="bg-stone-300 w-3/5 mx-auto p-4 font-medium text-stone-200 text-lg rounded-lg">
+        <div class="flex gap-10">
+            <img class="bg-stone-800 h-60 rounded-md" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png" />
+                <div class="flex flex-col gap-3">
+                    <p class="bg-stone-500 px-4 py-1 w-max rounded-xl">Name : {{pokemon.name}}</p>
+                    <p class="bg-stone-500 flex gap-2 px-4 py-2 rounded-xl">
+                        Types :
+                        @for (types of pokemon.types; track $index) {
+                            <p class="{{ types.type.name | pokemonTypeColor }} px-2 rounded-lg">{{types.type.name}}</p>
+                        }
+                    </p>
+                    <p class="bg-stone-500 px-4 py-1 rounded-xl">{{pokemon.stats[0].stat.name}} : {{pokemon.stats[0].base_stat}}</p>
+                    <p class="bg-stone-500 px-4 py-1 rounded-xl">{{pokemon.stats[1].stat.name}} : {{pokemon.stats[1].base_stat}}</p>
+                    <p class="bg-stone-500 px-4 py-1 rounded-xl">{{pokemon.stats[2].stat.name}} : {{pokemon.stats[2].base_stat}}</p>
+                </div>
+            <img class="bg-stone-800 h-60 rounded-md" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/{{pokemon.id}}.png" />
+            <p class="text-stone-700 min-w-max w-max font-semibold rotate-90 -translate-x-48">SHINY VERSION</p>
+        </div>
+    </div>
+    <div class="w-3/5 mx-auto">
+        <p (click)="goBack()" class="text-stone-200 w-min font-medium text-lg pt-6 hover:text-yellow-300 cursor-pointer">Back</p>
+    </div>
+} @else {
+    <div class="text-white flex flex-col items-center">
+        <img class="w-64 h-64 minFly" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" />
+        <span class="font-semibold text-xl pb-2">No Pokémon has been found</span>
+        <p (click)="goBack()" class="font-medium hover:text-yellow-300 cursor-pointer">Go back</p>
+    </div>
+}
